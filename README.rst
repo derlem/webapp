@@ -39,7 +39,7 @@ Running type checks with mypy:
 
 ::
 
-  $ mypy ngram_viewer
+  $ mypy webapp
 
 Test coverage
 ^^^^^^^^^^^^^
@@ -75,8 +75,8 @@ To run a celery worker:
 
 .. code-block:: bash
 
-    cd ngram_viewer
-    celery -A ngram_viewer.taskapp worker -l info
+    cd webapp
+    celery -A webapp.taskapp worker -l info
 
 Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
 

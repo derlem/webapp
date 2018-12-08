@@ -5,4 +5,4 @@ set -o nounset
 
 
 rm -f './celerybeat.pid'
-celery -A ngram_viewer.taskapp beat -l INFO
+celery -A webapp.taskapp beat -l INFO

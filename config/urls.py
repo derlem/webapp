@@ -17,7 +17,7 @@ urlpatterns = [
     # User management
     path(
         "users/",
-        include("ngram_viewer.users.urls", namespace="users"),
+        include("webapp.users.urls", namespace="users"),
     ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here

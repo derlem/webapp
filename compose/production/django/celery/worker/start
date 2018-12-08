@@ -5,4 +5,4 @@ set -o pipefail
 set -o nounset
 
 
-celery -A ngram_viewer.taskapp worker -l INFO
+celery -A webapp.taskapp worker -l INFO

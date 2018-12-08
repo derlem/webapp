@@ -1,5 +1,5 @@
 [run]
-include = ngram_viewer/*
+include = webapp/*
 omit = *migrations*, *tests*
 plugins =
     django_coverage_plugin

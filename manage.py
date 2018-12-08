@@ -23,8 +23,8 @@ if __name__ == "__main__":
         raise
 
     # This allows easy placement of apps within the interior
-    # ngram_viewer directory.
+    # webapp directory.
     current_path = os.path.dirname(os.path.abspath(__file__))
-    sys.path.append(os.path.join(current_path, "ngram_viewer"))
+    sys.path.append(os.path.join(current_path, "webapp"))
 
     execute_from_command_line(sys.argv)

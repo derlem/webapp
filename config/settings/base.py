@@ -4,8 +4,8 @@ Base settings to build other settings files upon.
 
 import environ
 
-ROOT_DIR = environ.Path(__file__) - 3  # (ngram_viewer/config/settings/base.py - 3 = ngram_viewer/)
-APPS_DIR = ROOT_DIR.path('ngram_viewer')
+ROOT_DIR = environ.Path(__file__) - 3  # (webapp/config/settings/base.py - 3 = webapp/)
+APPS_DIR = ROOT_DIR.path('webapp')
 
 env = environ.Env()
 
@@ -69,7 +69,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
 ]
 LOCAL_APPS = [
-    'ngram_viewer.users.apps.UsersAppConfig',
+    'webapp.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -79,7 +79,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
 MIGRATION_MODULES = {
-    'sites': 'ngram_viewer.contrib.sites.migrations'
+    'sites': 'webapp.contrib.sites.migrations'
 }
 
 # AUTHENTICATION
@@ -232,7 +232,7 @@ MANAGERS = ADMINS
 
 # Celery
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ['ngram_viewer.taskapp.celery.CeleryAppConfig']
+INSTALLED_APPS += ['webapp.taskapp.celery.CeleryAppConfig']
 if USE_TZ:
     # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-timezone
     CELERY_TIMEZONE = TIME_ZONE
@@ -262,9 +262,9 @@ ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = 'ngram_viewer.users.adapters.AccountAdapter'
+ACCOUNT_ADAPTER = 'webapp.users.adapters.AccountAdapter'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = 'ngram_viewer.users.adapters.SocialAccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'webapp.users.adapters.SocialAccountAdapter'
 
 
 # Your stuff...

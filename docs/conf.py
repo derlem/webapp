@@ -163,7 +163,7 @@ html_static_path = ["_static"]
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "ngram_viewerdoc"
+htmlhelp_basename = "webappdoc"
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -182,7 +182,7 @@ latex_elements = {
 latex_documents = [
     (
         "index",
-        "ngram_viewer.tex",
+        "webapp.tex",
         "Ngram Viewer Documentation",
         """Daniel Roy Greenfeld""",
         "manual",
@@ -217,7 +217,7 @@ latex_documents = [
 man_pages = [
     (
         "index",
-        "ngram_viewer",
+        "webapp",
         "Ngram Viewer Documentation",
         ["""Daniel Roy Greenfeld"""],
         1,
@@ -236,7 +236,7 @@ man_pages = [
 texinfo_documents = [
     (
         "index",
-        "ngram_viewer",
+        "webapp",
         "Ngram Viewer Documentation",
         """Daniel Roy Greenfeld""",
         "Ngram Viewer",
