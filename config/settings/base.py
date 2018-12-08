@@ -69,8 +69,9 @@ THIRD_PARTY_APPS = [
     'rest_framework',
 ]
 LOCAL_APPS = [
-    'webapp.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
+    'webapp.corpus.apps.CorpusConfig',
+    'webapp.users.apps.UsersAppConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

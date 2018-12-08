@@ -19,6 +19,11 @@ urlpatterns = [
         "users/",
         include("webapp.users.urls", namespace="users"),
     ),
+    # Corpus management
+    path(
+        "corpus/",
+        include("webapp.corpus.urls", namespace="corpus"),
+    ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(
