@@ -1,36 +1,6 @@
 from django.db import models
 
-
-# Create your models here.
-
-class DocumentTypes:
-    TERM = "term"
-    CATALOG = "catalog"
-    AGENDA = "agenda"
-
-    CHOICES = (
-        (TERM, 'term'),
-        (CATALOG, 'catalog'),
-        (AGENDA, 'agenda')
-    )
-
-
-class ParliamentTypes:
-    TBMM = "tbmm"
-    CSENATE = "csenate"
-    MGK = "mgk"
-    CSESSION = 'csession'
-    TBT = 'tbt'
-    CA = 'ca'
-
-    CHOICES = (
-        (TBMM, 'tbmm'),
-        (CSENATE, 'csenate'),
-        (MGK, 'mgk'),
-        (CSESSION, 'csession'),
-        (TBT, 'tbt'),
-        (CA, 'ca')
-    )
+from webapp.corpus.choices import DocumentTypes, ParliamentTypes
 
 
 class ParliamentText(models.Model):
