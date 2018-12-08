@@ -9,6 +9,6 @@ class ParliamentText(models.Model):
     legislative_year = models.IntegerField(null=True)
     volume = models.IntegerField(null=True)
     filename = models.CharField(max_length=5, null=True)
-    document_type = models.CharField(choices=DocumentTypes.CHOICES)
+    document_type = models.CharField(max_length=16, choices=DocumentTypes.CHOICES)
     session = models.CharField(max_length=3, null=True)
-    parliament_type = models.CharField(choices=ParliamentTypes.CHOICES)
+    parliament_type = models.CharField(max_length=16, choices=ParliamentTypes.CHOICES)
