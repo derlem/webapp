@@ -4,40 +4,47 @@ from django.core.management import BaseCommand
 
 from webapp.corpus.models import ParliamentText
 
+from pathlib import Path
 
-path = ""
+
+path = Path("/app/data")
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        for dirpath, dirs, files in os.walk(path):
-            for index, filename in enumerate(files):
-                fname = os.path.join(dirpath, filename)
+        files = path.rglob("*.txt")
 
-                with open(fname, "r", encoding="utf-8") as f:
-                    if index % 100 == 0:
-                        print("COUNT : " + str(index) + " in 997862 files ||| " + dirpath[46:48] + ". Donem |" + dirpath[50:51] + ". Yil  |" + dirpath[58:61] + ". Cilt ")
+        for index, filename in enumerate(files):
+            with open(filename, "r") as file_content:
+                if index % 100 == 0:
+                    # print("COUNT : " + str(index) + " in 997862 files ||| " + dirpath[46:48] + ". Donem |" + dirpath[50:51] + ". Yil  |" + dirpath[58:61] + ". Cilt ")
+                    pass
 
-                    txt = f.read()
-                    term = dirpath[46:48]
-                    legislative_year = dirpath[50:51]
-                    volume = dirpath[58:61]
-                    session = dirpath[61:64]
-                    gundem = dirpath[64:67]
+                txt = file_content.read()
 
-                    if session == "fih":
-                        document_type = "fihrist"
-                    elif gundem:
-                        document_type = "gundem"
-                    else:
-                        document_type ="birlesim"
+                first_parent = filename.parent.name
+                second_parent = filename.parent.parent.name
 
-                    ParliamentText.objects.create(
-                        document_type=document_type,
-                        text=txt,
-                        term=term,
-                        legislative_year=legislative_year,
-                        volume=volume,
-                        session=session,
-                        filename=filename[:-4]
-                    )
+                term = int(second_parent[1:3])
+                legislative_year = int(second_parent[5:6])
+                volume = int(first_parent[6:9])
+                session = first_parent[9:]
+
+                if session == "fih":
+                    document_type = "fihrist"
+                    session = None
+                elif session.endswith("gnd"):
+                    document_type = "gundem"
+                    session = session[:3]
+                else:
+                    document_type ="birlesim"
+
+                ParliamentText.objects.create(
+                    document_type=document_type,
+                    text=txt,
+                    term=term,
+                    legislative_year=legislative_year,
+                    volume=volume,
+                    session=session,
+                    filename=filename.name[:-4]
+                )
