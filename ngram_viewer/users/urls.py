@@ -1,6 +1,6 @@
 from django.urls import path
 
-from ngram_viewer.users.views import (
+from webapp.users.views import (
     user_list_view,
     user_redirect_view,
     user_update_view,

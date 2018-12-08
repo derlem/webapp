@@ -1,7 +1,7 @@
 import pytest
 
-from ngram_viewer.users.forms import UserCreationForm
-from ngram_viewer.users.tests.factories import UserFactory
+from webapp.users.forms import UserCreationForm
+from webapp.users.tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 

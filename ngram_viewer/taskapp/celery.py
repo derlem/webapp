@@ -10,7 +10,7 @@ if not settings.configured:
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')  # pragma: no cover
 
 
-app = Celery('ngram_viewer')
+app = Celery('webapp')
 # Using a string here means the worker will not have to
 # pickle the object when using Windows.
 # - namespace='CELERY' means all celery-related configuration keys
@@ -19,7 +19,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 
 class CeleryAppConfig(AppConfig):
-    name = 'ngram_viewer.taskapp'
+    name = 'webapp.taskapp'
     verbose_name = 'Celery Config'
 
     def ready(self):
