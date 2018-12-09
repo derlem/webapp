@@ -1,12 +1,12 @@
 class DocumentTypes:
-    TERM = "term"
+    SESSION = "session"
     CATALOG = "catalog"
     AGENDA = "agenda"
 
     CHOICES = (
-        (TERM, 'Term'),
-        (CATALOG, 'Catalog'),
-        (AGENDA, 'Agenda')
+        (SESSION, 'session'),
+        (CATALOG, 'catalog'),
+        (AGENDA, 'agenda')
     )
 
 
@@ -19,10 +19,10 @@ class ParliamentTypes:
     CA = "ca"
 
     CHOICES = (
-        (TBMM, 'TBMM'),
+        (TBMM, 'tbmm'),
         (CSENATE, 'csenate'),
-        (MGK, 'MGK'),
+        (MGK, 'mgk'),
         (CSESSION, 'csession'),
-        (TBT, 'TBT'),
-        (CA, 'CA')
+        (TBT, 'tbt'),
+        (CA, 'ca')
     )
