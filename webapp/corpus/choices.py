@@ -11,18 +11,20 @@ class DocumentTypes:
 
 
 class ParliamentTypes:
-    TBMM = "tbmm"
     CSENATE = "csenate"
-    MGK = "mgk"
     CSESSION = "csession"
+    CA = "ca"  # constituent_assembly_corpus
+    MGK = "mgk"
+    NA = 'na'  # national assembly
     TBT = "tbt"
-    CA = "ca"
+    TBMM = "tbmm"
 
     CHOICES = (
-        (TBMM, 'tbmm'),
         (CSENATE, 'csenate'),
-        (MGK, 'mgk'),
         (CSESSION, 'csession'),
+        (CA, 'ca'),
+        (MGK, 'mgk'),
+        (NA, 'na'),
         (TBT, 'tbt'),
-        (CA, 'ca')
+        (TBMM, 'tbmm')
     )
