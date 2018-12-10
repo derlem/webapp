@@ -234,15 +234,15 @@ class Command(BaseCommand):
                 else:
                     document_type = "session"
 
-                # ParliamentText.objects.create(
-                #     document_type=document_type,
-                #     text=txt,
-                #     term=term,
-                #     legislative_year=legislative_year,
-                #     volume=volume,
-                #     session=session,
-                #     filename=filename.name[:-4]
-                # )
+                ParliamentText.objects.create(
+                    document_type=document_type,
+                    text=txt,
+                    term=term,
+                    legislative_year=legislative_year,
+                    volume=volume,
+                    session=session,
+                    filename=filename.name[:-4]
+                )
 
                 if index % 100 == 0:
                     print("IN TBMM CORPUS -> COUNT : " + str(index) + " in 997862 files ||| " + str(
