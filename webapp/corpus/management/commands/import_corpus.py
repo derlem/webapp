@@ -226,7 +226,6 @@ class Command(BaseCommand):
                 legislative_year = int(second_parent[5:6])
                 volume = int(first_parent[6:9])
                 session = first_parent[9:]
-                print(session)
                 if session == "fih":
                     document_type = "catalog"
                     session = None
