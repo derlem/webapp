@@ -71,17 +71,19 @@ class Command(BaseCommand):
 
     def get_csession_corpus(self, filename, first_parent, index, txt):
 
-        term = int(first_parent[4:6])
+
         legislative_year = None
 
-        if first_parent[5:8] == 'fih':
+        if first_parent[3:6] == 'fih':
             document_type = "catalog"
             volume = int(first_parent[6:8])
             session = None
+            term=None
         else:
             document_type = 'session'
-            volume = int(first_parent[6:8])
+            volume = int(first_parent[5:8])
             session = int(first_parent[-3:])
+            term = int(first_parent[3:5])
 
         ParliamentText.objects.create(
             document_type=document_type,
