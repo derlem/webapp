@@ -70,7 +70,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     # Your stuff: custom apps go here
-    'webapp.corpus.apps.CorpusConfig',
+    'webapp.corpus',
     'webapp.users.apps.UsersAppConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
