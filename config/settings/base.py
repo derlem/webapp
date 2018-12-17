@@ -70,6 +70,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     # Your stuff: custom apps go here
+    'research',
     'webapp.corpus',
     'webapp.users.apps.UsersAppConfig',
 ]
