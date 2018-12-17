@@ -1,5 +1,9 @@
 from research.serializers import *
+import logging
 
+from webapp.corpus.models import ParliamentText
+
+log = logging.getLogger(__name__)
 
 def simpleQuery(query):
     print("query:-> ", query)
@@ -9,10 +13,11 @@ def simpleQuery(query):
         q.filter(document_type='session')
         data = {}
         data['term'] = []
-        for i in range(1, 5):
+        for i in range(1, 2):
             data['term'].append(q.filter(term=(i)).count())
 
         ser = SimpleSerializer(
-            context={"type": "simple", "query_string": txt_search_input, "payload": data['term']})
+            context={"type": "simple", "query_string": txt_search_input.__str__(), "payload": data['term'].__str__()})
 
-        return ser
+        log.info(ser.context.__str__())
+        return ser.context

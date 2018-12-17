@@ -1,11 +1,9 @@
 from rest_framework import serializers
-from webapp.corpus.models import ParliamentText
 
-class SimpleSerializer(serializers.ModelSerializer):
+class SimpleSerializer(serializers.Serializer):
     qtype = serializers.SerializerMethodField()
     payload = serializers.SerializerMethodField()
     class Meta:
-        model=ParliamentText
         fields=[
             "qtype",
             "query_string",
