@@ -5,6 +5,8 @@ from django.core.management import BaseCommand
 from webapp.corpus.models import ParliamentText
 
 from pathlib import Path
+# Csenate de toplanti yili term e
+# tbt toplanti yili legislation year a
 
 
 class Command(BaseCommand):

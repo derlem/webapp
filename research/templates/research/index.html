@@ -1,7 +1,36 @@
 {% extends "research/base.html" %}
 {% block title %} Turkish Parliament Minutes Research {% endblock title %}
-{% block content %}
 
+{% block content %}
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+  <script>
+    Highcharts.chart('container', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Historic World Population by Region'
+      },
+      xAxis: {
+        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+      },
+      series: [{
+        name: 'Year 1800',
+        data: [107, 31, 635, 203, 2]
+      }, {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6]
+      }, {
+        name: 'Year 2012',
+        data: [1052, 954, 4250, 740, 38]
+      }]
+    });
+  </script>
+  <iframe width="100%" height="400" src="https://time.graphics/embed?v=1&id=200189" frameborder="0"
+          allowfullscreen></iframe>
+  <div><a style="font-size: 12px; text-decoration: none;" title="Powered by Time.Graphics" href="https://time.graphics">Powered
+    by Time.Graphics</a></div>
   <form method="post" action="#">
     {% csrf_token %}
     <div class="form-group">
@@ -14,6 +43,8 @@
     </div>
 
     <hr>
+
+    {#  TODO:  at least a type must be select #}
     {#    ADVANCED SEARCH #}
     <div class="form-group">
       <div class="col-md-offset-2 col-md-10">
@@ -125,7 +156,7 @@
       <strong>Results!</strong> Tbmm Result are below.
     </div>
     <ul>
-     {{ query }}
+      {{ query }}
     </ul>
   {% endif %}
 
