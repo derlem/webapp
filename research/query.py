@@ -81,3 +81,6 @@ def advancedQuery(query):
     log.info(q.query.__str__())
     log.info(ser.context.__str__())
     return ser.context
+
+
+

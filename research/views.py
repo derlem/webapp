@@ -11,7 +11,7 @@ def index(request):
         if request.POST['txt_search_input']:
             response = simpleQuery(query=request.POST)
 
-            # ADVANCED
+        # ADVANCED
         elif request.POST['txt_advanced_search_input']:
             response = advancedQuery(query=request.POST)
 
