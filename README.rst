@@ -13,8 +13,8 @@ Ngram viewer for Turkish parlamentery texts
 
 For the first time
 ============
-*  Install the ``docker`` ``docker-compose``
-*  Change the ``query`` branch
+*  Install the ``docker`` ``docker-compose`` https://docs.docker.com/install/#supported-platforms
+*  Clone the repo and change the ``query`` branch
 *  In current repo directory, run ``docker-compose build`` to load all containers.
 *  then ``docker-compose up -d`` to run all containers.
 *  then go to ``Importing Corpus`` instuctions. to add all corpus to postresql
