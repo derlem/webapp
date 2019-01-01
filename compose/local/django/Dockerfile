@@ -1,11 +1,31 @@
-FROM python:3.7.1-alpine
+#FROM python:3.7.1-alpine
+#
+#
+#RUN apk update \
+#  # psycopg2 dependencies
+#  && apk add --virtual build-deps gcc python3-dev musl-dev \
+#  && apk add postgresql-dev \
+#  # Pillow dependencies
+#  && apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev \
+#  # CFFI dependencies
+#  && apk add libffi-dev py-cffi \
+#  # Translations dependencies
+#  && apk add gettext \
+#  # https://docs.djangoproject.com/en/dev/ref/django-admin/#dbshell
+#  && apk add postgresql-client \
+#
+##  added
+#  && apk add libc-dev
+
+FROM alpine:3.7
 
 ENV PYTHONUNBUFFERED 1
 
-RUN apk update \
-  # psycopg2 dependencies
-  && apk add --virtual build-deps gcc python3-dev musl-dev \
-  && apk add postgresql-dev \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main" > /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/repositories
+RUN apk --no-cache --update-cache add gcc gfortran python3 python3-dev  build-base wget freetype-dev libpng-dev openblas-dev
+RUN apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev \
+     && apk add --virtual build-deps gcc python3-dev musl-dev \
   # Pillow dependencies
   && apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev \
   # CFFI dependencies
@@ -15,9 +35,15 @@ RUN apk update \
   # https://docs.djangoproject.com/en/dev/ref/django-admin/#dbshell
   && apk add postgresql-client
 
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+#RUN pip3 install gensim
+
+
+
+
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
-RUN pip install -r /requirements/local.txt
+RUN pip3 install -r /requirements/local.txt
 
 COPY ./compose/production/django/entrypoint /entrypoint
 RUN sed -i 's/\r//' /entrypoint
