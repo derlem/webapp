@@ -20,7 +20,7 @@ class Command(BaseCommand):
             tbmm_path = Path(kwargs['tbmm'])
             txts_path = Path(kwargs['txts'])
             self.get_TXTs_corpus(txts_path)
-            self.get_tbmm_corpus(tbmm_path)
+            # self.get_tbmm_corpus(tbmm_path)
         else:
             print('ERROR: PLEASE ADD TBMM AND TXTS PATH')
             print('For Example: import_corpus  -tbmm ./tbmm -txts ./TXTs')

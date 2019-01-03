@@ -1,4 +1,4 @@
-# import gensim
+import gensim
 from django.db.models import Case, When
 # from gensim.test.utils import common_texts, get_tmpfile
 
