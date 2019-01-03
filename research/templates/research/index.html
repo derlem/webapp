@@ -1,0 +1,82 @@
+{% extends "research/base.html" %}
+{% load static i18n %}
+{% block title %} Turkish Parliament Minutes Research {% endblock title %}
+{% block content %}
+
+  <div class="col-md-3 offset-md-3 ">
+    <button type="button" class="btn btn-info"
+            data-toggle="collapse" data-target="#timeline"
+            id="advanced_search" style="margin-top:10px; text-align: center; margin-bottom:10px;">
+      <span class="glyphicon glyphicon-cog"></span> Hide/Show Timeline
+    </button>
+  </div>
+
+
+
+  <iframe id="timeline" class="collapse timeline show" width="100%" height="400"
+          src="https://time.graphics/embed?v=1&id=200189" frameborder="0"
+          allowfullscreen></iframe>
+  <div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 15rem;">
+        <img style="width: 11em;align-self: center;" class="card-img-top"
+             src="{% static "images/simplesearch.png" %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Simple Query</h5>
+          <p class="card-text">You can search a word from all transcripts</p>
+          <a href="{% url 'research:query_view' %}" class="btn btn-success">Go to Simple Query </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 15rem;">
+        <img style="width: 11em;align-self: center;" class="card-img-top"
+             src="{% static "images/advancedsearch.png" %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Advanced Query</h5>
+          <p class="card-text">You can search a word from all transcripts</p>
+          <a href="{% url 'research:query_view' %}" class="btn btn-success">Go to Advanced Query </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 15rem;">
+        <img style="width: 11em;align-self: center;" class="card-img-top"
+             src="{% static "images/simplesew2v.png" %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Simple Word2vec</h5>
+          <p class="card-text">You can search a word from all transcripts</p>
+          <a href="{% url 'research:word2vec_view' %}" class="btn btn-success">Go to Simple Word2vec </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3" style="display: flex;justify-content: center;">
+      <div class="card" style="width: 15rem;">
+        <img style="width: 11em;align-self: center;" class="card-img-top"
+             src="{% static "images/advancedw2v.png" %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Advanced Word2vec</h5>
+          <p class="card-text">You can search a word from all transcripts</p>
+          <a href="{% url 'research:word2vec_view' %}" class="btn btn-success">Go to Advanced Word2vec </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+
+
+
+  {% if query %}
+    <hr>
+    <div style="margin-top: 50px" class="alert alert-success">
+      <strong>Results!</strong> Tbmm Result are below.
+    </div>
+    <ul>
+      {{ query }}
+    </ul>
+  {% endif %}
+
+{% endblock content %}

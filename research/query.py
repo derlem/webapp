@@ -1,6 +1,6 @@
 import gensim
 from django.db.models import Case, When
-# from gensim.test.utils import common_texts, get_tmpfile
+from gensim.test.utils import common_texts, get_tmpfile
 
 from research.serializers import *
 import logging
@@ -84,47 +84,47 @@ def advancedQuery(query):
     log.info(ser.context.__str__())
     return ser.context
 
-#
-# def read_input():
-#     """This method reads the input file which is in gzip format"""
-#     tbmms = ParliamentText.objects.all()
-#
-#     # logging.info("reading TBMM ...this may take a while")
-#
-#     for i, line in enumerate(tbmms):
-#         # if (i % 1000 == 0):
-#         # logging.info("read {0} reviews".format(i))
-#
-#         # do some pre-processing and return a list of words for each review text
-#         yield gensim.utils.simple_preprocess(line.text)
-#
-#
-# def mostSimilar(word):
-#     try:
-#         similar=gensim.model.wv.most_similar(positive=word)
-#         count=str(gensim.model.wv.vocab[word].count)
-#         result=[]
-#         result.append(similar)
-#         result.append(count)
-#         return (result)
-#
-#     except:
-#         print('EXCEPTION')
-#
+
+def read_input():
+    """This method reads the input file which is in gzip format"""
+    tbmms = ParliamentText.objects.all()
+
+    # logging.info("reading TBMM ...this may take a while")
+
+    for i, line in enumerate(tbmms):
+        # if (i % 1000 == 0):
+        # logging.info("read {0} reviews".format(i))
+
+        # do some pre-processing and return a list of words for each review text
+        yield gensim.utils.simple_preprocess(line.text)
+
+
+def mostSimilar(word):
+    try:
+        similar=gensim.model.wv.most_similar(positive=word)
+        count=str(gensim.model.wv.vocab[word].count)
+        result=[]
+        result.append(similar)
+        result.append(count)
+        return (result)
+
+    except:
+        print('EXCEPTION')
+
 
 def simpleW2V(query):
     txt_search_input = query['txt_search_input']
-    return txt_search_input
+    # return txt_search_input
 
-    # documents = list(read_input())
-    #
-    # # if model cache is not exist , it generate
-    # model = gensim.models.Word2Vec(documents, size=150, window=5, min_count=2, workers=4)
-    # model.save("tbmmW2v.model")
-    #
-    # model = gensim.models.Word2Vec.load("tbmmW2v.model")
-    # model.train(documents, total_examples=len(documents), epochs=10)
-    # return mostSimilar(txt_search_input)
+    documents = list(read_input())
+
+    # if model cache is not exist , it generate
+    model = gensim.models.Word2Vec(documents, size=150, window=5, min_count=2, workers=4)
+    model.save("tbmmW2v.model")
+
+    model = gensim.models.Word2Vec.load("tbmmW2v.model")
+    model.train(documents, total_examples=len(documents), epochs=10)
+    return mostSimilar(txt_search_input)
 
 
 def advancedW2V(query):

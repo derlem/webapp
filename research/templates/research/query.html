@@ -1,0 +1,149 @@
+{% extends "research/base.html" %}
+{% block title %} Turkish Parliament Minutes Research {% endblock title %}
+
+{% block content %}
+  <div class="col-md-3 offset-md-3 ">
+        <button  type="button" class="btn btn-info"
+                data-toggle="collapse" data-target="#timeline"
+                id="advanced_search" style="margin-top:10px; text-align: center; margin-bottom:10px;">
+          <span class="glyphicon glyphicon-cog"></span> Hide/Show Timeline
+        </button>
+      </div>
+
+
+
+  <iframe id="timeline" class="collapse timeline show" width="100%" height="400" src="https://time.graphics/embed?v=1&id=200189" frameborder="0"
+          allowfullscreen></iframe>
+
+
+
+  <form method="post" action="#">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class="col-md-8 control-label">Query Search from the TBMM Minutes</label>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="txt_search_input" name="txt_search_input"
+               placeholder="Search any word">
+      </div>
+
+    </div>
+
+    <hr>
+
+    {#  TODO:  at least a type must be select #}
+    {#    ADVANCED SEARCH #}
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button type="button" class="btn btn-info"
+                data-toggle="collapse" data-target="#filter-panel"
+                id="advanced_search" style="margin-top:10px; margin-bottom:10px;">
+          <span class="glyphicon glyphicon-cog"></span> Advanced search options
+        </button>
+      </div>
+    </div>
+    <div id="filter-panel" class="collapse filter-panel">
+      <div class="form-group">
+        <label class="col-md-8 control-label">Advanced Search from the TBMM Minutes</label>
+        <div class="col-md-8 p-3">
+          <input type="text" class="form-control" id="txt_advanced_search_input" name="txt_advanced_search_input"
+                 placeholder="Search any word">
+        </div>
+        <div class="col-md-5">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chx_add_similarities"
+                   name="chx_add_similarities"> Include Similary Words
+          </label>
+        </div>
+      </div>
+
+      {#   DOCUMENT TYPE   #}
+      <div class="form-group">
+        <label for="pipelines" class="col-md-2 control-label"> Document Type</label>
+        <div class="col-md-10">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_session" checked
+                   name="chk_session" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> Session - Birleşim
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_catalog" checked
+                   name="chk_catalog" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> Catalog - Fihrisht
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_agenda" checked
+                   name="chk_agenda" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> Agenda - Gündem
+          </label>
+
+        </div>
+      </div>
+
+
+      {#   PARLIAMENT TYPE   #}
+      <div class="form-group">
+        <label for="pipelines" class="col-md-2 control-label"> Parliament Type</label>
+        <div class="col-md-10">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_tbmm" checked
+                   name="chk_tbmm" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> TBMM
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_csenate" checked
+                   name="chk_csenate" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> CSENATE - CUMHURİYET SENATOSU
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_csession" checked
+                   name="chk_csession" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> CLOSED SESSION - KAPALI OTURUM ( GİZLİ CELSE )
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_ca" checked
+                   name="chk_ca" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> CONSTITUENT ASSEMBLY - KURUCU MECLİS
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_mgk" checked
+                   name="chk_mgk" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> MGK - MİLLİ GÜVENLİK KONSEYİ- DANIŞMA MECLİSİ
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_na" checked
+                   name="chk_na" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> NATIONAL ASSEMBLY - MİLLET MECLİSİ
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="chk_tbt" checked
+                   name="chk_tbt" data-toggle="tooltip" data-placement="top"
+                   title="strictly done if checked"> JOINT MEETING - TBMM BİRLEŞİK TOPLANTI
+          </label>
+
+
+        </div>
+      </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+  </form>
+
+
+
+  {% if query %}
+    <hr>
+    <div style="margin-top: 50px" class="alert alert-success">
+      <strong>Results!</strong> Tbmm Result are below.
+    </div>
+    <ul>
+      {{ query }}
+    </ul>
+  {% endif %}
+
+{% endblock content %}
