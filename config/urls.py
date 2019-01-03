@@ -24,6 +24,11 @@ urlpatterns = [
         "corpus/",
         include("webapp.corpus.urls", namespace="corpus"),
     ),
+    # Research management
+    path(
+        "research/",
+        include("research.urls", namespace="research"),
+    ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(
