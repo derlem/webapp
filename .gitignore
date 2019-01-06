@@ -331,3 +331,9 @@ webapp/media/
 .env
 .envs/*
 !.envs/.local/
+
+
+
+tbmmW2v.model
+tbmmW2v.model.trainables.syn1neg.npy
+tbmmW2v.model.wv.vectors.npy

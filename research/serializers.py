@@ -3,10 +3,15 @@ from rest_framework import serializers
 class SimpleSerializer(serializers.Serializer):
     qtype = serializers.SerializerMethodField()
     payload = serializers.SerializerMethodField()
+    duration = serializers.SerializerMethodField()
+    query_string = serializers.SerializerMethodField()
+
+
     class Meta:
         fields=[
             "qtype",
             "query_string",
+            "duration"
             "payload"
         ]
 
@@ -18,3 +23,6 @@ class SimpleSerializer(serializers.Serializer):
 
     def get_query_string(self, obj):
         return self.context["query_string"].__str__()
+
+    def get_duration(self, obj):
+        return self.context["duration"].__str__()

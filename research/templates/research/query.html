@@ -2,17 +2,62 @@
 {% block title %} Turkish Parliament Minutes Research {% endblock title %}
 
 {% block content %}
-  <div class="col-md-3 offset-md-3 ">
-        <button  type="button" class="btn btn-info"
-                data-toggle="collapse" data-target="#timeline"
-                id="advanced_search" style="margin-top:10px; text-align: center; margin-bottom:10px;">
-          <span class="glyphicon glyphicon-cog"></span> Hide/Show Timeline
-        </button>
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages': ['bar']});
+    google.charts.setOnLoadCallback(drawChart);
+    var chartData = {{ chart_data |safe}}
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(chartData);
+
+        var options = {
+          title: '',
+          chartArea: {width: '100%'},
+          hAxis: {
+            title: 'Simple Search',
+            minValue: 0,
+            maxValue: 1
+          },
+          vAxis: {
+            title: 'Frequency of Use'
+          }
+        };
+
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+  </script>
+
+  {% if chart_data %}
+    <div id="barchart_material" style="width: 1000px; height: 500px;"></div>
+    {% if durationTime %}
+      <hr>
+      <div style="margin-top: 40px" class="alert alert-success">
+        <strong>{{ durationTime }}!</strong> seconds lasted
       </div>
 
+    {% endif %}
+  {% endif %}
 
 
-  <iframe id="timeline" class="collapse timeline show" width="100%" height="400" src="https://time.graphics/embed?v=1&id=200189" frameborder="0"
+
+
+  <div class="col-md-3 offset-md-3 ">
+    <button type="button" class="btn btn-info"
+            data-toggle="collapse" data-target="#timeline"
+            id="advanced_search" style="margin-top:10px; text-align: center; margin-bottom:10px;">
+      <span class="glyphicon glyphicon-cog"></span> Hide/Show Timeline
+    </button>
+  </div>
+
+
+
+  <iframe id="timeline" class="collapse timeline show" width="100%" height="400"
+          src="https://time.graphics/embed?v=1&id=200189" frameborder="0"
           allowfullscreen></iframe>
 
 
