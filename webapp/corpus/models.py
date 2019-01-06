@@ -12,3 +12,9 @@ class ParliamentText(models.Model):
     document_type = models.CharField(max_length=16, choices=DocumentTypes.CHOICES)
     session = models.CharField(max_length=3, null=True)
     parliament_type = models.CharField(max_length=16, choices=ParliamentTypes.CHOICES)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['document_type']),
+            models.Index(fields=['parliament_type'])
+        ]
