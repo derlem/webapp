@@ -2,6 +2,7 @@ import os
 
 from django.core.management import BaseCommand
 
+from research.query import simpleW2V
 from webapp.corpus.models import ParliamentText
 
 from pathlib import Path
@@ -57,13 +58,14 @@ class Command(BaseCommand):
         else:
             document_type = "session"
         ParliamentText.objects.create(
-            document_type=document_type,
             text=txt,
             term=term,
             legislative_year=legislative_year,
             volume=volume,
+            filename=filename.name[:-4],
+            document_type=document_type,
             session=session,
-            filename=filename.name[:-4]
+            parliament_type='csenate'
         )
         if index % 100 == 0:
             print("IN C SENATE CORPUS -> COUNT : " + str(index) + " || " + str(
@@ -86,13 +88,14 @@ class Command(BaseCommand):
             term = int(first_parent[3:5])
 
         ParliamentText.objects.create(
-            document_type=document_type,
             text=txt,
             term=term,
             legislative_year=legislative_year,
             volume=volume,
+            filename=filename.name[:-4],
+            document_type=document_type,
             session=session,
-            filename=filename.name[:-4]
+            parliament_type='csession'
         )
 
         if index % 100 == 0:
@@ -120,13 +123,14 @@ class Command(BaseCommand):
         else:
             document_type = "session"
         ParliamentText.objects.create(
-            document_type=document_type,
             text=txt,
             term=term,
             legislative_year=legislative_year,
             volume=volume,
+            filename=filename.name[:-4],
+            document_type=document_type,
             session=session,
-            filename=filename.name[:-4]
+            parliament_type='ca'
         )
         if index % 100 == 0:
             print("IN Kurucu Meclis CORPUS -> COUNT : " + str(index) + " || " + str(
@@ -150,15 +154,16 @@ class Command(BaseCommand):
             session = session[:3]
         else:
             document_type = "session"
-        ParliamentText.objects.create(
-            document_type=document_type,
-            text=txt,
-            term=term,
-            legislative_year=legislative_year,
-            volume=volume,
-            session=session,
-            filename=filename.name[:-4]
-        )
+            ParliamentText.objects.create(
+                text=txt,
+                term=term,
+                legislative_year=legislative_year,
+                volume=volume,
+                filename=filename.name[:-4],
+                document_type=document_type,
+                session=session,
+                parliament_type='mgk'
+            )
         if index % 100 == 0:
             print("IN MGK CORPUS -> COUNT : " + str(index) + " || " + str(
                 term) + ". Donem |" + str(legislative_year) + ". Yil  |" + str(volume) + ". Cilt ")
@@ -177,13 +182,15 @@ class Command(BaseCommand):
         else:
             document_type = "session"
         ParliamentText.objects.create(
-            document_type=document_type,
             text=txt,
             term=term,
             legislative_year=legislative_year,
             volume=volume,
+            filename=filename.name[:-4],
+            document_type=document_type,
             session=session,
-            filename=filename.name[:-4]
+            parliament_type='na'
+
         )
         if index % 100 == 0:
             print("IN MM CORPUS -> COUNT : " + str(index) + " || " + str(
@@ -203,13 +210,14 @@ class Command(BaseCommand):
         else:
             document_type = "session"
         ParliamentText.objects.create(
-            document_type=document_type,
             text=txt,
             term=term,
             legislative_year=legislative_year,
             volume=volume,
+            filename=filename.name[:-4],
+            document_type=document_type,
             session=session,
-            filename=filename.name[:-4]
+            parliament_type='tbt'
         )
         if index % 100 == 0:
             print("IN TBT CORPUS -> COUNT : " + str(index) + " || " + str(
@@ -236,13 +244,14 @@ class Command(BaseCommand):
                     document_type = "session"
 
                 ParliamentText.objects.create(
-                    document_type=document_type,
                     text=txt,
                     term=term,
                     legislative_year=legislative_year,
                     volume=volume,
+                    filename=filename.name[:-4],
+                    document_type=document_type,
                     session=session,
-                    filename=filename.name[:-4]
+                    parliament_type='tbmm'
                 )
 
                 if index % 100 == 0:
