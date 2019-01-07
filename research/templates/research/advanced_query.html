@@ -16,7 +16,7 @@
         if (count < 2) {
           count++;
           $("#inputs").append(
-            '<div class="col-md-3 p-3"> <input type="text" class="form-control" id="txtcompare' + (count) +'" name="txtcompare' + (count) +'" placeholder="Search any word"> </div>'
+            '<div class="col-md-3 p-3"> <input type="text" class="form-control" id="txtcompare' + (count) + '" name="txtcompare' + (count) + '" placeholder="Search any word"> </div>'
           );
         }
       });
@@ -36,14 +36,13 @@
     var chartData = {{ chart_data |safe}}
       function drawChart() {
         var data = google.visualization.arrayToDataTable(chartData);
-
         var options = {
-          title: '',
+
+          bars: 'vertical', // Required for Material Bar Charts.
           chartArea: {width: '100%'},
           hAxis: {
-            title: 'Simple Search',
-            minValue: 0,
-            maxValue: 1
+            title: 'Comparison Search'
+
           },
           vAxis: {
             title: 'Frequency of Use'
@@ -57,8 +56,8 @@
       }
   </script>
 
-  {% if chart_data %}
-    <div id="barchart_material" style="width: 1000px; height: 500px;"></div>
+  {% if chart_data and isCompare %}
+    <div id="barchart_material" style="width: 1000px; margin-top:40px;height: 500px;"></div>
     {% if durationTime %}
       <hr>
       <div style="margin-top: 40px" class="alert alert-success">
