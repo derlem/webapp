@@ -129,7 +129,7 @@ def advancedQuery(query):
         print('if : ')
         ser = SimpleSerializer(
             context={"type": "advanced compare",
-                     "query_string": "['"+txt_advanced_search_input.__str__() + "'],['" + txtcompare1 + "'],['"+ txtcompare2+"']",
+                     "query_string": "['" + txt_advanced_search_input.__str__() + "'],['" + txtcompare1 + "'],['" + txtcompare2 + "']",
                      "duration": duration.__str__(),
                      "payload": dictionary.__str__()})
 
@@ -169,6 +169,7 @@ def read_input(query, type):
         q = session_filter | catalog_filter | agenda_filter
         print(q.query.__str__())
     print('here')
+
     for i, line in enumerate(q):
         if (i % 100 == 0):
             print("read " + i.__str__() + " reviews")

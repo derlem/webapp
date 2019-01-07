@@ -33,10 +33,12 @@
   <script type="text/javascript">
     google.charts.load('current', {'packages': ['bar']});
     google.charts.setOnLoadCallback(drawChart);
-    var chartData = {{ chart_data |safe}}
+    var chartData =
+    {{ chart_data |safe}}
+    var isComp = {{ isCompare|safe }}
       function drawChart() {
         var data = google.visualization.arrayToDataTable(chartData);
-        var options = {
+        var optionsCompare = {
 
           bars: 'vertical', // Required for Material Bar Charts.
           chartArea: {width: '100%'},
@@ -49,14 +51,27 @@
           }
         };
 
+        var options = {
+          title: '',
+          chartArea: {width: '100%'},
+          hAxis: {
+            title: 'Advanced Search',
+            minValue: 0,
+            maxValue: 1
+          },
+          vAxis: {
+            title: 'Frequency of Use'
+          }
+        };
+
 
         var chart = new google.charts.Bar(document.getElementById('barchart_material'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        chart.draw(data, google.charts.Bar.convertOptions(isComp ? optionsCompare : options));
       }
   </script>
 
-  {% if chart_data and isCompare %}
+  {% if chart_data %}
     <div id="barchart_material" style="width: 1000px; margin-top:40px;height: 500px;"></div>
     {% if durationTime %}
       <hr>

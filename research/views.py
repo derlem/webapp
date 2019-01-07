@@ -77,9 +77,6 @@ def advanced_query_view(request):
 
         if request.POST['txt_advanced_search_input']:
             response = advancedQuery(request.POST)
-            # response = {'type': 'advanced compare', 'query_string': "['altin','gumus','']",
-            #             'duration': '233.32243132591248',
-            #             'payload': "{'txt_advanced_search_input': '[2461, 4324, 1929, 2267, 1753, 2484, 2093, 5362, 6427, 3700, 3098, 0, 0, 0, 0, 0, 7352, 11257, 14829, 11241, 15373, 27177, 20518, 10441, 0]', 'txtcompare1': '[1036, 2278, 836, 1644, 837, 1271, 742, 1540, 1955, 1947, 1205, 0, 0, 0, 0, 0, 1077, 1497, 2235, 1539, 1327, 2125, 1141, 1905, 0]'}"}
             durationTime = response['duration']
 
             if response['type'] == 'advanced compare':
@@ -120,6 +117,16 @@ def advanced_query_view(request):
                 context = {'query': response, 'chart_data': chart_data, 'durationTime': durationTime, 'isCompare': True}
 
             else:
-                context = {'query': response}
+                chart_data = []
+                chart_data.append(['Simple Query', response['query_string']])
+                arr = eval(response["payload"])
+
+                for index, number in enumerate(arr):
+                    dizi = []
+                    dizi.append((index + 1).__str__() + '. Dönem')
+                    dizi.append(number)
+                    chart_data.append(dizi)
+                context = {'query': response, 'chart_data': chart_data, 'durationTime': durationTime,'isCompare': False}
+
 
     return render(request, 'research/advanced_query.html', context)
