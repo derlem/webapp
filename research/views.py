@@ -73,10 +73,28 @@ def query_view(request):
 
 def advanced_query_view(request):
     context = None
-    # response={'type': 'simple', 'query_string': 'bankası','payload': '[3101, 3504, 2012, 2922, 2072, 1525, 1753, 2387, 3580, 1836, 2051, 345, 273, 311, 267, 343, 3379, 5358, 6442, 4152, 8905, 9866, 6157, 1981, 0]'}
     if request.method == 'POST':
+
         if request.POST['txt_advanced_search_input']:
-            response = advancedQuery(query=request.POST)
-            context = {'query': response}
+            response = advancedQuery(request.POST)
+            durationTime = response['duration']
+
+            if response['type'] == 'advanced compare':
+                print('payload\n\n\n\n\t')
+                print(response['payload'])
+                # chart_data = []
+                # chart_data.append(['Simple Query', response['query_string']])
+                # arr = eval(response["payload"])
+                #
+                # # print(type(arr))
+                # for index, number in enumerate(arr):
+                #     dizi = []
+                #     dizi.append((index + 1).__str__() + '. Dönem')
+                #     dizi.append(number)
+                #     chart_data.append(dizi)
+                # context = {'query': response, 'chart_data': chart_data, 'durationTime': durationTime}
+
+            else:
+                context = {'query': response}
 
     return render(request, 'research/advanced_query.html', context)

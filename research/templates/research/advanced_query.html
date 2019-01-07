@@ -8,16 +8,21 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script>
-    var count = 1
+    var count = 0
+
     $(document).ready(function () {
+
       $("#add-another").click(function () {
-
-        $("#inputs").append(
-          '<div class="col-md-3 p-3"> <input type="text" class="form-control" id="txt_advanced_search_input" name="txtcompare' + (count++) + ' " placeholder="Search any word"> </div>'
-        );
-
+        if (count < 2) {
+          count++;
+          $("#inputs").append(
+            '<div class="col-md-3 p-3"> <input type="text" class="form-control" id="txtcompare' + (count) +'" name="txtcompare' + (count) +'" placeholder="Search any word"> </div>'
+          );
+        }
       });
+
     });
+
   </script>
 
 
