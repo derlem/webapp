@@ -150,7 +150,7 @@ def read_input(query, type):
     print(query)
     """This method reads the input file which is in gzip format"""
 
-    q = ParliamentText.objects.filter(document_type='session')
+    q = ParliamentText.objects.filter(document_type='catalog')
 
     # DOCUMENT TYPE
     if type == 'advanced':
@@ -231,6 +231,7 @@ def simpleW2V(query):
                      "payload": result.__str__()})
         log.info(ser.context.__str__())
         return ser.context
+
 
 
 def advancedW2V(query):
