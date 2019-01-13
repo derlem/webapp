@@ -11,6 +11,8 @@ services:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
     image: webapp_production_django
+    ports:
+      - "8000:8000"
     depends_on:
       - postgres
       - redis
