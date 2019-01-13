@@ -12,6 +12,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "0.0.0.0",
     "127.0.0.1",
+    '178.128.32.192'
 ]
 
 # CACHES
@@ -53,6 +54,7 @@ DEBUG_TOOLBAR_CONFIG = {
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2']
 if env('USE_DOCKER') == 'yes':
     import socket
+
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS += [ip[:-1] + '1' for ip in ips]
 
