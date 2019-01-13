@@ -12,7 +12,7 @@ services:
       dockerfile: ./compose/production/django/Dockerfile
     image: webapp_production_django
     ports:
-      - "3000:3000"
+      - "8000:8000"
     depends_on:
       - postgres
       - redis
@@ -50,19 +50,19 @@ services:
   redis:
     image: redis:3.2
 
-  celeryworker:
-    <<: *django
-    image: webapp_production_celeryworker
-    command: /start-celeryworker
-
-  celerybeat:
-    <<: *django
-    image: webapp_production_celerybeat
-    command: /start-celerybeat
-
-  flower:
-    <<: *django
-    image: webapp_production_flower
-    ports:
-      - "5555:5555"
-    command: /start-flower
+#  celeryworker:
+#    <<: *django
+#    image: webapp_production_celeryworker
+#    command: /start-celeryworker
+#
+#  celerybeat:
+#    <<: *django
+#    image: webapp_production_celerybeat
+#    command: /start-celerybeat
+#
+#  flower:
+#    <<: *django
+#    image: webapp_production_flower
+#    ports:
+#      - "5555:5555"
+#    command: /start-flower
