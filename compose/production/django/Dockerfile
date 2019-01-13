@@ -2,8 +2,6 @@ FROM registry.gitlab.com/ulgens/ubuntu-python3:latest
 
 ENV PYTHONUNBUFFERED 1
 
-RUN addgroup -S django \
-    && adduser -S -G django django
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
