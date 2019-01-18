@@ -27,7 +27,7 @@ Parliament type consist of
     
     MGK (Milli Güvenlik Kurulu)
     
-    NA # national assembly (Millet Meclisi)
+    NA national assembly (Millet Meclisi)
     
     TBT (Tbmm birleşik Toplantı)
     
