@@ -1,7 +1,8 @@
 Research
 ============
 For building
-``docker-compose up --build``
+
+`` docker-compose up --build ``
 then if successfully run this command, we can stop the code to run in background.
 `` docker-compose up -d``
 when this command runs normal, you can go to 
