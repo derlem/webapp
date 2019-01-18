@@ -8,8 +8,34 @@ when this command runs normal, you can go to
 http://localhost:8000/research
 
 You will see ``simple query`` ``advanced query`` ``simple word2vec`` ``advanced word2vec`` parts. 
-``simple query`` 
-``simple word2vec`` trains only ``Catalog-Fihrist`` , not all corpus
+``simple query``  The system is looking for a word to contains or not in a text.
+``advanced query``  The system is looking for a word to contains or not in a text. But you can filter with document type and parliement type.
+
+Document type  consist of 
+    SESSION
+    
+    CATALOG
+    
+    AGENDA
+    
+Parliament type consist of
+    CSENATE (Cumhuriyet Senatosu)
+    
+    CSESSION (Kapalı Oturum)
+    
+    CA (constituent_assembly_corpus)(Kurucu Meclis)
+    
+    MGK (Milli Güvenlik Kurulu)
+    
+    NA # national assembly (Millet Meclisi)
+    
+    TBT (Tbmm birleşik Toplantı)
+    
+    TBMM 
+
+
+
+``simple word2vec`` trains only ``Catalog-Fihrist`` , not all corpus. It fetch the similiar words.
 
 (The ``session-oturum`` was taking too long and we felt like we had trouble. But it can be tried on the better computer.) 
 
