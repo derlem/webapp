@@ -4,7 +4,7 @@ Pillow==7.1.2  # https://github.com/python-pillow/Pillow
 argon2-cffi==20.1.0  # https://github.com/hynek/argon2_cffi
 whitenoise==5.1.0  # https://github.com/evansd/whitenoise
 redis>=2.10.6,<4  # pyup: < 3 # https://github.com/antirez/redis
-celery==4.4.5  # pyup: < 5.0  # https://github.com/celery/celery
+celery==4.4.6  # pyup: < 5.0  # https://github.com/celery/celery
 flower==0.9.4  # https://github.com/mher/flower
 
 # Django
